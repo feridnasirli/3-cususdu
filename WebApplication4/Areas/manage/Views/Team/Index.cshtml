@@ -1,0 +1,36 @@
+﻿@model List<Team>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<table class="table">
+    <div>
+        <a asp-action="create" asp-controller="team" class="btn btn-success">Create</a>
+    </div>
+  <thead>
+    <tr>
+      <th scope="col">FullName</th>
+      <th scope="col">Pression</th>
+      <th scope="col">Image</th>
+    </tr>
+  </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            
+    <tr>
+      <td>@item.FullName</td>
+      <td>@item.Pression</td>
+       <td>
+                    <img style="width:150px" src="~/uploads/teams/@item.Image">
+       </td>
+      
+      <td>
+         <a class="btn btn-info" asp-action="update" asp-controller="team" asp-route-id="@item.Id">Update</a>
+         <a class="btn btn-danger" asp-action="delete" asp-controller="team" asp-route-id="@item.Id">Delete</a>
+
+      </td>
+        </tr>
+        }
+    </tbody>
+</table>
